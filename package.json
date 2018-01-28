@@ -19,7 +19,8 @@
 		"nodemon": "^1.11.0"
 	},
 	"scripts": {
-		"dev": "node_modules/.bin/nodemon ./bin/startServer.js"
+		"dev": "node_modules/.bin/nodemon ./bin/startServer.js",
+		"start": "node bin/startServer.js"
 	},
 	"engines": {
 		"node": "8.1.2",
