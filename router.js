@@ -23,15 +23,14 @@ class Router {
         this.router.post("/auth/login", authController.login)
         this.router.post("/auth/signin", authController.signIn)
 
-
         /*
             DECKS
         */
         this.router.route("/decks")
-            .get(decksController.getAll)
+            .get(authController.authenticate, decksController.getAll)
             .post(authController.authenticate, decksController.create)
         this.router.route("/decks/:id")
-            .get(decksController.getSingle)
+            .get(authController.authenticate, decksController.getSingle)
             .put(authController.authenticate, decksController.update)
 			.delete(authController.authenticate, decksController.remove)
 			
@@ -39,10 +38,10 @@ class Router {
             CARDS
         */
         this.router.route("/cards")
-            .get(cardsController.getAll)
+            .get(authController.authenticate, cardsController.getAll)
             .post(authController.authenticate, cardsController.create)
         this.router.route("/cards/:id")
-            .get(cardsController.getSingle)
+            .get(authController.authenticate, cardsController.getSingle)
             .put(authController.authenticate, cardsController.update)
             .delete(authController.authenticate, cardsController.remove)
     }

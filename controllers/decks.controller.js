@@ -5,7 +5,7 @@ class DecksController {
 
     async getAll(req, res, next) {
         try {
-            httpResponse.ok(res, await dbcontext.find("deck"))
+            httpResponse.ok(res, await dbcontext.find("deck", { "user_id": req.loggedUser.id }))
         } 
         catch (error) {
             httpResponse.notFound(res, err)
