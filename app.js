@@ -6,7 +6,8 @@ const   express = require("express"),
         http = require("http"),
         bodyParser = require("body-parser"),
         cookieParser = require("cookie-parser"),
-        path = require("path")
+		path = require("path"),
+		cors = require('cors')
 
 const   router = require("./router")
         dbcontext = require("./database/dbcontext")
@@ -20,7 +21,8 @@ class Server {
     init() {
         this.app = express()
         // Setting the body parser to work with JSON
-        this.app.use(bodyParser.json())
+		this.app.use(bodyParser.json())
+		this.app.use(cors())
         this.app.use(cookieParser())
         // Setting the static file server to the folder "public"
         this.app.use(express.static(path.join(__dirname, "./public")))
