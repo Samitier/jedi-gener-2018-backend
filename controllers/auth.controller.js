@@ -45,7 +45,7 @@ class AuthController {
 	}
 
     async authenticate(req, res, next) {
-        let token = req.cookies["api-token"] || req.header["api-token"]
+        let token = req.header["api-token"] || req.cookies["api-token"] 
         if(!token) return httpResponse.unauthorized(res)
         let verify = promisify(jwt.verify)
         try {
