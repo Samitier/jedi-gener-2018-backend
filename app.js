@@ -28,9 +28,9 @@ class Server {
         this.app.use(express.static(path.join(__dirname, "./public")))
         // Adding the API routing
         this.app.use("/api", router)
-        // Returning a "not found" message if no middleware has been hit
-        this.app.use(
-            (req, res) => res.status(404).json({ message: "Resource not found" })
+        // Returning angular app if no middleware has been hit
+		this.app.use(
+            (req, res) => res.sendFile(path.join(__dirname, "./public/index.html"))
         )
     }
 
